@@ -29,13 +29,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    qcustomplot/qcustomplot.cpp \
     infprg.cpp
+    qcustomplot/qcustomplot.cpp \
 
 HEADERS += \
         mainwindow.h \
-    qcustomplot/qcustomplot.h \
     infprg.h \
+    qcustomplot/qcustomplot.h \
     fast-cpp-csv-parser-master/csv.h
 
 FORMS += \

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "infprg.h"
+
 //#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -53,7 +55,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::infoPrg()
 {
-    QMessageBox::about(this,"О программе","Stress-Strain Diagram Builder - программа для построения диаграмм деформирования по данным цифрового мультиметра\n\nВерсия: 0.3.0\nДата: 27.01.2020\nАвтор: Raven-98\nE-mail: andriy1898k@hotmail.com");
+    infPrg *infprg = new infPrg(this);
+
+    infprg->show();
 }
 
 void MainWindow::helpPrg()
@@ -308,7 +312,7 @@ void MainWindow::ButtPlotSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " + fil->errorString());
+        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
     }
     else
     {
@@ -338,7 +342,7 @@ void MainWindow::ButtDataSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " + fil->errorString());
+        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
     }
     else
     {
