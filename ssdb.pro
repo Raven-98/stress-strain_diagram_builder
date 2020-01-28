@@ -29,21 +29,21 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+    qcustomplot/qcustomplot.cpp \
     infprg.cpp \
-    qcustomplot/qcustomplot.cpp
+    infplt.cpp
 
 HEADERS += \
         mainwindow.h \
-    infprg.h \
     qcustomplot/qcustomplot.h \
-    fast-cpp-csv-parser-master/csv.h
+    infprg.h \
+    fast-cpp-csv-parser-master/csv.h \
+    infplt.h
 
 FORMS += \
         mainwindow.ui \
-    infprg.ui
-
-RESOURCES += \
-    ssdb.qrc
+    infprg.ui \
+    infplt.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

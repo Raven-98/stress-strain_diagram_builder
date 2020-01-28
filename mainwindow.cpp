@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "infprg.h"
+#include "infplt.h"
 
 //#include <QDebug>
 
@@ -62,12 +63,8 @@ void MainWindow::infoPrg()
 
 void MainWindow::helpPrg()
 {
-    QMessageBox *dil = new QMessageBox(this);
-    dil->setWindowTitle("Помощь");
-    dil->setText("k - коэффициент перехода от U к σ\na - толщина образца, мм\nb - ширина образца, мм\nl0 - начальная длинна образца, мм\nv - скорость растяжения, мм/сек");
-    dil->exec();
-
-    delete dil;
+    infPlt *infplt = new infPlt(this);
+    infplt->show();
 }
 
 void MainWindow::edFileName()
