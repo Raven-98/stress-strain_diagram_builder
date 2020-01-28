@@ -1,1 +1,1 @@
-# stress-strain_diagram_builder
+Stress-Strain Diagram Builder - программа для построения диаграмм деформирования по данным цифрового мультиметра
