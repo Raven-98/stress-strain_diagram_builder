@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QDebug>
+//#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::infoPrg()
 {
-    qDebug() << QT_VERSION_STR;
     QMessageBox::about(this,"О программе","Stress-Strain Diagram Builder - программа для построения диаграмм деформирования по данным цифрового мультиметра\n\nВерсия: 0.3.0\nДата: 27.01.2020\nАвтор: Raven-98\nE-mail: andriy1898k@hotmail.com");
 }
 
@@ -178,8 +177,6 @@ void MainWindow::ButtPlots()
                     {
                         value[i] = data[i + *index_u].value * 1000.;
                     }
-                    //ui->statusBar->showMessage("i: " + QString::number(i) + "\ttime: " + QString::number(time[i]) + "\tvalue: " + QString::number(value[i]) + "\tunit: " + QString::fromUtf8(data[i + *index_u].unit.c_str()));
-                    //qDebug() << "i: " + QString::number(i) + "\ttime: " + QString::number(time[i]) + "\tvalue: " + QString::number(value[i]) + "\tunit: " + QString::fromUtf8(data[i + *index_u].unit.c_str());
                 }
 
                 data.clear();
@@ -252,9 +249,6 @@ void MainWindow::ButtPlots()
                 QPen *pen = new QPen;
                 pen->setWidth(2);
                 pen->setColor(QColor(0,100,180));
-                //pen->setColor(QColor(Qt::blue));
-                //ui->customPlot->graph(0)->setPen(QPen(QColor(0,100,180),2));
-                //ui->customPlot->graph(0)->setPen(QPen(Qt::blue));
                 ui->customPlot->graph(0)->setPen(*pen);
                 delete pen;
 
@@ -314,7 +308,7 @@ void MainWindow::ButtPlotSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
+        ui->statusBar->showMessage("Ошибка: " + fil->errorString());
     }
     else
     {
@@ -344,7 +338,7 @@ void MainWindow::ButtDataSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
+        ui->statusBar->showMessage("Ошибка: " + fil->errorString());
     }
     else
     {
