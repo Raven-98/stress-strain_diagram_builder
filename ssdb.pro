@@ -29,8 +29,8 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    infprg.cpp
-    qcustomplot/qcustomplot.cpp \
+    infprg.cpp \
+    qcustomplot/qcustomplot.cpp
 
 HEADERS += \
         mainwindow.h \
