@@ -4,7 +4,7 @@
 #include "infprg.h"
 #include "infplt.h"
 
-#include <QDebug>
+//#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
