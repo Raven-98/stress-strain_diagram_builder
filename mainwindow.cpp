@@ -4,7 +4,7 @@
 #include "infprg.h"
 #include "infplt.h"
 
-//#include <QDebug>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -57,7 +57,6 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::infoPrg()
 {
     infPrg *infprg = new infPrg(this);
-
     infprg->show();
 }
 
@@ -160,7 +159,7 @@ void MainWindow::ButtPlots()
                 }
                 ui->statusBar->showMessage("Завершено");
 
-                 ui->statusBar->showMessage("Обработка данных...");
+                ui->statusBar->showMessage("Обработка данных...");
                 unsigned long *max_index_u = new unsigned long(data.size() - *index_u);
 
                 int *time = new int[*max_index_u];
@@ -186,15 +185,15 @@ void MainWindow::ButtPlots()
                 delete index_u;
                 delete max_index_u;
 
-                double *a = new double(ui->lineEdit_3->text().toDouble());
-                double *b = new double(ui->lineEdit_4->text().toDouble());
+                double *a = new double(str_to_double(ui->lineEdit_3->text()));
+                double *b = new double(str_to_double(ui->lineEdit_4->text()));
                 double *S = new double(*a * *b);
                 delete a;
                 delete b;
 
-                double *k = new double(ui->lineEdit_2->text().toDouble());
-                double *l0 = new double(ui->lineEdit_5->text().toDouble());
-                double *v = new double(ui->lineEdit_6->text().toDouble());
+                double *k = new double(str_to_double(ui->lineEdit_2->text()));
+                double *l0 = new double(str_to_double(ui->lineEdit_5->text()));
+                double *v = new double(str_to_double(ui->lineEdit_6->text()));
 
                 QVector<double> epsilon(*max_index_i), sigma(*max_index_i);
                 for (int i = 0;i < *max_index_i;i++)
@@ -357,13 +356,18 @@ void MainWindow::ButtDataSave()
     ui->lineEdit->setFocus();
 }
 
+double MainWindow::str_to_double(QString str)
+{
+    return str.replace(",",".").toDouble();
+}
+
 MainWindow::~MainWindow()
 {
-    sett->setValue("SETTING/k",QString::number(ui->lineEdit_2->text().toDouble()));
-    sett->setValue("SETTING/a",QString::number(ui->lineEdit_3->text().toDouble()));
-    sett->setValue("SETTING/b",QString::number(ui->lineEdit_4->text().toDouble()));
-    sett->setValue("SETTING/l0",QString::number(ui->lineEdit_5->text().toDouble()));
-    sett->setValue("SETTING/v",QString::number(ui->lineEdit_6->text().toDouble()));
+    sett->setValue("SETTING/k",QString::number(str_to_double(ui->lineEdit_2->text())));
+    sett->setValue("SETTING/a",QString::number(str_to_double(ui->lineEdit_3->text())));
+    sett->setValue("SETTING/b",QString::number(str_to_double(ui->lineEdit_4->text())));
+    sett->setValue("SETTING/l0",QString::number(str_to_double(ui->lineEdit_5->text())));
+    sett->setValue("SETTING/v",QString::number(str_to_double(ui->lineEdit_6->text())));
 
     sett->setValue("SETTING/mw_width",this->width());
     sett->setValue("SETTING/mw_height",this->height());
@@ -374,7 +378,7 @@ MainWindow::~MainWindow()
     }
     delete [] ddd;
     delete max_index_i;
-    
+
     delete ui;
 
     delete sett;

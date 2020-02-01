@@ -54,6 +54,8 @@ private:
         double value;
         std::string unit;
     };
+
+    double str_to_double(QString str);
 };
 
 #endif // MAINWINDOW_H
