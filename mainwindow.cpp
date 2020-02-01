@@ -359,8 +359,6 @@ void MainWindow::ButtDataSave()
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-
     sett->setValue("SETTING/k",QString::number(ui->lineEdit_2->text().toDouble()));
     sett->setValue("SETTING/a",QString::number(ui->lineEdit_3->text().toDouble()));
     sett->setValue("SETTING/b",QString::number(ui->lineEdit_4->text().toDouble()));
@@ -376,6 +374,8 @@ MainWindow::~MainWindow()
     }
     delete [] ddd;
     delete max_index_i;
+    
+    delete ui;
 
     delete sett;
 }
