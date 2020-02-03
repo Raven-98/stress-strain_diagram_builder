@@ -27,26 +27,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    infplt.cpp \
         main.cpp \
         mainwindow.cpp \
-    qcustomplot/qcustomplot.cpp \
     infprg.cpp \
-    infplt.cpp
+    qcustomplot/qcustomplot.cpp
 
 HEADERS += \
+    infplt.h \
         mainwindow.h \
-    qcustomplot/qcustomplot.h \
     infprg.h \
-    fast-cpp-csv-parser-master/csv.h \
-    infplt.h
+    qcustomplot/qcustomplot.h \
+    fast-cpp-csv-parser-master/csv.h
 
 FORMS += \
+    infplt.ui \
         mainwindow.ui \
-    infprg.ui \
-    infplt.ui
+    infprg.ui
 
 RESOURCES += \
     ssdb.qrc
+
+RC_FILE += \
+    ssdb.rc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

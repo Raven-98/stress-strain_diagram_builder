@@ -49,7 +49,7 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Версия 0.3.0-2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Версия 0.3.3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -108,7 +108,7 @@
          <item>
           <widget class="QLabel" name="label_7">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Qt&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -148,8 +148,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="ssdb.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

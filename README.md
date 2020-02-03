@@ -4,5 +4,4 @@
 
 ## Установка приложения
 
-Установочный файл для Windows можна скачать по этой ссылке [https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A](https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A)
-
+Установочный файл для Windows можна скачать [здесь](https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A)

@@ -33,6 +33,8 @@ public:
 private slots:
     void infoPrg();
     void helpPrg();
+    void infoFile();
+    void infoSave();
 
     void ButtFileName();
     void ButtPlots();
@@ -55,7 +57,7 @@ private:
         std::string unit;
     };
 
-    double str_to_double(QString str);
+    double q_str_to_double(QString str);
 };
 
 #endif // MAINWINDOW_H

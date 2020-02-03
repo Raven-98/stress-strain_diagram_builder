@@ -357,7 +357,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>32</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -370,7 +370,15 @@
     <property name="title">
      <string>Справка</string>
     </property>
+    <widget class="QMenu" name="menu_3">
+     <property name="title">
+      <string>Дополнительная информация</string>
+     </property>
+     <addaction name="action_4"/>
+     <addaction name="action_5"/>
+    </widget>
     <addaction name="action_2"/>
+    <addaction name="menu_3"/>
     <addaction name="action_3"/>
    </widget>
    <addaction name="menu"/>
@@ -406,11 +414,13 @@
    </property>
   </action>
   <action name="action_4">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="text">
-    <string>Строка состояния</string>
+    <string>Работа с файлами</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Сохранение данных</string>
    </property>
   </action>
  </widget>

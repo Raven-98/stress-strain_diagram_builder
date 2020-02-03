@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->action_1,&QAction::triggered,this,qApp->quit);
     connect(ui->action_2,&QAction::triggered,this,&MainWindow::helpPrg);
     connect(ui->action_3,&QAction::triggered,this,&MainWindow::infoPrg);
+    connect(ui->action_4,&QAction::triggered,this,&MainWindow::infoFile);
+    connect(ui->action_5,&QAction::triggered,this,&MainWindow::infoSave);
 
     connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::ButtFileName);
     connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::ButtPlots);
@@ -57,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::infoPrg()
 {
     infPrg *infprg = new infPrg(this);
+
     infprg->show();
 }
 
@@ -64,6 +67,22 @@ void MainWindow::helpPrg()
 {
     infPlt *infplt = new infPlt(this);
     infplt->show();
+}
+
+void MainWindow::infoFile()
+{
+    QMessageBox ms;
+    ms.setWindowTitle("Работа с файлами");
+    ms.setText("При открытии файла желательно избегать символов кириллицы.\n\nДля корректного чтения файла и обработки данных из него желательно, чтобы файл имел формат txt. В файле обязательно должны быть следующие колонки: Time, Value и Unit; также все колонки должны быть разделены шагом табуляции.");
+    ms.exec();
+}
+
+void MainWindow::infoSave()
+{
+    QMessageBox ms;
+    ms.setWindowTitle("Сохранение данных");
+    ms.setText("Сохранение диаграммы и обработаных данных производится по пути исходного файла.");
+    ms.exec();
 }
 
 void MainWindow::edFileName()
@@ -159,7 +178,7 @@ void MainWindow::ButtPlots()
                 }
                 ui->statusBar->showMessage("Завершено");
 
-                ui->statusBar->showMessage("Обработка данных...");
+                 ui->statusBar->showMessage("Обработка данных...");
                 unsigned long *max_index_u = new unsigned long(data.size() - *index_u);
 
                 int *time = new int[*max_index_u];
@@ -185,15 +204,15 @@ void MainWindow::ButtPlots()
                 delete index_u;
                 delete max_index_u;
 
-                double *a = new double(str_to_double(ui->lineEdit_3->text()));
-                double *b = new double(str_to_double(ui->lineEdit_4->text()));
+                double *a = new double(q_str_to_double(ui->lineEdit_3->text()));
+                double *b = new double(q_str_to_double(ui->lineEdit_4->text()));
                 double *S = new double(*a * *b);
                 delete a;
                 delete b;
 
-                double *k = new double(str_to_double(ui->lineEdit_2->text()));
-                double *l0 = new double(str_to_double(ui->lineEdit_5->text()));
-                double *v = new double(str_to_double(ui->lineEdit_6->text()));
+                double *k = new double(q_str_to_double(ui->lineEdit_2->text()));
+                double *l0 = new double(q_str_to_double(ui->lineEdit_5->text()));
+                double *v = new double(q_str_to_double(ui->lineEdit_6->text()));
 
                 QVector<double> epsilon(*max_index_i), sigma(*max_index_i);
                 for (int i = 0;i < *max_index_i;i++)
@@ -356,18 +375,18 @@ void MainWindow::ButtDataSave()
     ui->lineEdit->setFocus();
 }
 
-double MainWindow::str_to_double(QString str)
+double MainWindow::q_str_to_double(QString str)
 {
     return str.replace(",",".").toDouble();
 }
 
 MainWindow::~MainWindow()
 {
-    sett->setValue("SETTING/k",QString::number(str_to_double(ui->lineEdit_2->text())));
-    sett->setValue("SETTING/a",QString::number(str_to_double(ui->lineEdit_3->text())));
-    sett->setValue("SETTING/b",QString::number(str_to_double(ui->lineEdit_4->text())));
-    sett->setValue("SETTING/l0",QString::number(str_to_double(ui->lineEdit_5->text())));
-    sett->setValue("SETTING/v",QString::number(str_to_double(ui->lineEdit_6->text())));
+    sett->setValue("SETTING/k",QString::number(q_str_to_double(ui->lineEdit_2->text())));
+    sett->setValue("SETTING/a",QString::number(q_str_to_double(ui->lineEdit_3->text())));
+    sett->setValue("SETTING/b",QString::number(q_str_to_double(ui->lineEdit_4->text())));
+    sett->setValue("SETTING/l0",QString::number(q_str_to_double(ui->lineEdit_5->text())));
+    sett->setValue("SETTING/v",QString::number(q_str_to_double(ui->lineEdit_6->text())));
 
     sett->setValue("SETTING/mw_width",this->width());
     sett->setValue("SETTING/mw_height",this->height());
