@@ -18,6 +18,8 @@
 #include <vector>
 #include <string>
 
+#include "qcustomplot/qcustomplot.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -43,6 +45,8 @@ private slots:
 
     void edFileName();
 
+    void slotMouseMove(QMouseEvent * event);
+
 private:
     Ui::MainWindow *ui;
     QSettings *sett;
@@ -58,6 +62,8 @@ private:
     };
 
     double q_str_to_double(QString str);
+
+    QCPItemTracer *tracer;
 };
 
 #endif // MAINWINDOW_H

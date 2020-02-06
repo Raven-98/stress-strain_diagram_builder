@@ -54,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent) :
         ddd[i] = new double[1];
     }
     max_index_i = new int;
+
+    tracer = new QCPItemTracer(ui->customPlot);
+    connect(ui->customPlot,&QCustomPlot::mouseMove,this,&MainWindow::slotMouseMove);
 }
 
 void MainWindow::infoPrg()
@@ -283,6 +286,8 @@ void MainWindow::ButtPlots()
 
                 ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 
+                tracer->setGraph(ui->customPlot->graph(0));
+
                 //ui->customPlot->setOpenGl(true,16);
 
                 ui->customPlot->replot();
@@ -313,6 +318,8 @@ void MainWindow::ButtPlots()
 
 void MainWindow::ButtPlotSave()
 {
+    tracer->setVisible(false);
+
     QString *s = new QString(ui->lineEdit->text());
     int *f = new int(s->length());
 
@@ -331,7 +338,7 @@ void MainWindow::ButtPlotSave()
     }
     else
     {
-        ui->customPlot->savePng(*s);
+        ui->customPlot->savePng(*s,1181,866);
         fil->close();
         ui->statusBar->showMessage("Файл " + *s + " успешно сохранен");
         QMessageBox::information(this,"","Сохранение прошло успешно");
@@ -340,6 +347,8 @@ void MainWindow::ButtPlotSave()
     delete fil;
 
     ui->lineEdit->setFocus();
+
+    tracer->setVisible(true);
 }
 
 void MainWindow::ButtDataSave()
@@ -380,6 +389,14 @@ double MainWindow::q_str_to_double(QString str)
     return str.replace(",",".").toDouble();
 }
 
+void MainWindow::slotMouseMove(QMouseEvent *event)
+{
+    double coordX = ui->customPlot->xAxis->pixelToCoord(event->pos().x());
+    tracer->setGraphKey(coordX);
+    ui->statusBar->showMessage("ε: "+QString::number(tracer->position->key())+"\t\tσ: "+QString::number(tracer->position->value()));
+    ui->customPlot->replot();
+}
+
 MainWindow::~MainWindow()
 {
     sett->setValue("SETTING/k",QString::number(q_str_to_double(ui->lineEdit_2->text())));
@@ -397,6 +414,8 @@ MainWindow::~MainWindow()
     }
     delete [] ddd;
     delete max_index_i;
+
+    //delete tracer;
 
     delete ui;
 
