@@ -48,9 +48,6 @@ FORMS += \
 RESOURCES += \
     ssdb.qrc
 
-RC_FILE += \
-    ssdb.rc
-
 TRANSLATIONS += \
     language_ru_RU.ts
 
