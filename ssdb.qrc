@@ -3,5 +3,6 @@
 <qresource>
     <file>img/icon.png</file>
     <file>img/im001.png</file>
+    <file>language_ru_RU.qm</file>
 </qresource>
 </RCC>

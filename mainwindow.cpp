@@ -12,10 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    sett = new QSettings(QCoreApplication::applicationDirPath() + "/ssdb.ini",QSettings::IniFormat);
+
+    language = new QString(sett->value("SETTING/language").toString());
+    languagesFunc(language);
 
     ui->lineEdit->setFocus();
-
-    sett = new QSettings(QCoreApplication::applicationDirPath() + "/ssdb.ini",QSettings::IniFormat);
 
     resize(sett->value("SETTING/mw_width").toInt(),sett->value("SETTING/mw_height").toInt());
 
@@ -26,23 +28,33 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->lineEdit_2->setText(sett->value("SETTING/k").toString());
     ui->lineEdit_3->setText(sett->value("SETTING/a").toString());
-    ui->lineEdit_3->setToolTip("[мм]");
-    ui->label_4->setToolTip("[мм]");
+    ui->lineEdit_3->setToolTip(tr("[mm]"));
+    ui->label_4->setToolTip(tr("[mm]"));
     ui->lineEdit_4->setText(sett->value("SETTING/b").toString());
-    ui->lineEdit_4->setToolTip("[мм]");
-    ui->label_3->setToolTip("[мм]");
+    ui->lineEdit_4->setToolTip(tr("[mm]"));
+    ui->label_3->setToolTip(tr("[mm]"));
     ui->lineEdit_5->setText(sett->value("SETTING/l0").toString());
-    ui->lineEdit_5->setToolTip("[мм]");
-    ui->label_5->setToolTip("[мм]");
+    ui->lineEdit_5->setToolTip(tr("[mm]"));
+    ui->label_5->setToolTip(tr("[mm]"));
     ui->lineEdit_6->setText(sett->value("SETTING/v").toString());
-    ui->lineEdit_6->setToolTip("[мм/с]");
-    ui->label_6->setToolTip("[мм/с]");
+    ui->lineEdit_6->setToolTip(tr("[mm/s]"));
+    ui->label_6->setToolTip(tr("[mm/s]"));
 
     connect(ui->action_1,&QAction::triggered,this,qApp->quit);
     connect(ui->action_2,&QAction::triggered,this,&MainWindow::helpPrg);
     connect(ui->action_3,&QAction::triggered,this,&MainWindow::infoPrg);
     connect(ui->action_4,&QAction::triggered,this,&MainWindow::infoFile);
     connect(ui->action_5,&QAction::triggered,this,&MainWindow::infoSave);
+    connect(ui->action_6,&QAction::triggered,this,&MainWindow::languageRuFunc);
+    connect(ui->action_7,&QAction::triggered,this,&MainWindow::languageEnFunc);
+
+    actionGroup = new QActionGroup(this);
+    actionGroup->addAction(ui->action_6);
+    actionGroup->addAction(ui->action_7);
+    if (*language == "ru")
+        ui->action_6->setChecked(true);
+    else
+        ui->action_7->setChecked(true);
 
     connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::ButtFileName);
     connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::ButtPlots);
@@ -67,6 +79,24 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->customPlot,&QCustomPlot::mouseMove,this,&MainWindow::slotMouseMove);
 }
 
+void MainWindow::languagesFunc(QString *lang)
+{
+    languageTranslator.load(":/language_" + *lang);
+    qApp->installTranslator(&languageTranslator);
+    ui->retranslateUi(this);
+}
+
+void MainWindow::languageEnFunc()
+{
+    language = new QString("en_US");
+    languagesFunc(language);
+}
+void MainWindow::languageRuFunc()
+{
+    language = new QString("ru_RU");
+    languagesFunc(language);
+}
+
 void MainWindow::infoPrg()
 {
     infPrg *infprg = new infPrg(this);
@@ -83,16 +113,16 @@ void MainWindow::helpPrg()
 void MainWindow::infoFile()
 {
     QMessageBox ms;
-    ms.setWindowTitle("Работа с файлами");
-    ms.setText("При открытии файла желательно избегать символов кириллицы.\n\nДля корректного чтения файла и обработки данных из него желательно, чтобы файл имел формат txt. В файле обязательно должны быть следующие колонки: Time, Value и Unit; также все колонки должны быть разделены шагом табуляции.");
+    ms.setWindowTitle(tr("Work with files"));
+    ms.setText(tr("When opening a file, it is advisable to avoid Cyrillic characters.\n\nFor correct reading of the file and processing of data from it, it is desirable that the file has the txt format. The file must contain the following columns: Time, Value and Unit; also, all columns should be separated by a tab stop."));
     ms.exec();
 }
 
 void MainWindow::infoSave()
 {
     QMessageBox ms;
-    ms.setWindowTitle("Сохранение данных");
-    ms.setText("Сохранение диаграммы и обработаных данных производится по пути исходного файла.");
+    ms.setWindowTitle(tr("Saving data"));
+    ms.setText(tr("The diagram and processed data are saved along the path of the source file."));
     ms.exec();
 }
 
@@ -109,11 +139,11 @@ void MainWindow::ButtFileName()
     ui->pushButton_3->setEnabled(false);
     ui->pushButton_4->setEnabled(false);
 
-    QString *text = new QString(QFileDialog::getOpenFileName(this,"Открыть файл","","Text Files (*.txt);;All Files (*.*)"));
+    QString *text = new QString(QFileDialog::getOpenFileName(this,tr("Open file"),"",tr("Text Files (*.txt);;All Files (*.*)")));
 
     ui->lineEdit->setText(*text);
 
-    ui->statusBar->showMessage("Открыт файл: " + *text);
+    ui->statusBar->showMessage(tr("Open file") + ": " + *text);
 
     delete text;
 
@@ -124,27 +154,27 @@ void MainWindow::ButtPlots()
 {
     if (ui->lineEdit->text() == "")
     {
-        QMessageBox::critical(this,"Ошибка","Поле \"Файл\" не может быть пустым!");
+        QMessageBox::critical(this,tr("Error"),tr("Field \"File\" cannot be empty!"));
     }
     else if (ui->lineEdit_2->text() == "")
     {
-        QMessageBox::critical(this,"Ошибка","Поле \"k\" не может быть пустым!");
+        QMessageBox::critical(this,tr("Error"),tr("Field \"k\" cannot be empty!"));
     }
     else if (ui->lineEdit_3->text() == "")
     {
-        QMessageBox::critical(this,"Ошибка","Поле \"a\" не может быть пустым!");
+        QMessageBox::critical(this,tr("Error"),tr("Field \"a\" cannot be empty!"));
     }
     else if (ui->lineEdit_4->text() == "")
     {
-            QMessageBox::critical(this,"Ошибка","Поле \"b\" не может быть пустым!");
+            QMessageBox::critical(this,tr("Error"),tr("Field \"b\" cannot be empty!"));
     }
     else if (ui->lineEdit_5->text() == "")
     {
-        QMessageBox::critical(this,"Ошибка","Поле \"l0\" не может быть пустым!");
+        QMessageBox::critical(this,tr("Error"),tr("Field \"l0\" cannot be empty!"));
     }
     else if (ui->lineEdit_6->text() == "")
     {
-        QMessageBox::critical(this,"Ошибка","Поле \"v\" не может быть пустым!");
+        QMessageBox::critical(this,tr("Error"),tr("Field \"v\" cannot be empty!"));
     }
     else
     {
@@ -154,7 +184,7 @@ void MainWindow::ButtPlots()
         {
             std::vector<dt> data;
             dt d;
-            ui->statusBar->showMessage("Считывание данных...");
+            ui->statusBar->showMessage(tr("Reading data..."));
             io::CSVReader<3,io::trim_chars<' '>,io::no_quote_escape<'\t'>,io::single_line_comment<'#'>> file(fileName->toUtf8().constData());
             try
             {
@@ -175,9 +205,9 @@ void MainWindow::ButtPlots()
                     d.unit = Unit;
                     data.push_back(d);
                 }
-                ui->statusBar->showMessage("Завершено");
+                ui->statusBar->showMessage(tr("Completed"));
 
-                ui->statusBar->showMessage("Поиск начального значения...");
+                ui->statusBar->showMessage(tr("Finding the initial value..."));
                 unsigned long *index_u = new unsigned long();
                 for (unsigned long i = 0;i < data.size();++i)
                 {
@@ -187,9 +217,9 @@ void MainWindow::ButtPlots()
                         break;
                     }
                 }
-                ui->statusBar->showMessage("Завершено");
+                ui->statusBar->showMessage(tr("Completed"));
 
-                 ui->statusBar->showMessage("Обработка данных...");
+                 ui->statusBar->showMessage(tr("Data processing..."));
                 unsigned long *max_index_u = new unsigned long(data.size() - *index_u);
 
                 int *time = new int[*max_index_u];
@@ -237,9 +267,9 @@ void MainWindow::ButtPlots()
                 delete k;
                 delete l0;
                 delete v;
-                ui->statusBar->showMessage("Завершено");
+                ui->statusBar->showMessage(tr("Completed"));
 
-                ui->statusBar->showMessage("Построение диаграммы...");
+                ui->statusBar->showMessage(tr("Charting..."));
                 ui->customPlot->clearGraphs();
                 ui->customPlot->addGraph();
 
@@ -299,7 +329,7 @@ void MainWindow::ButtPlots()
                 //ui->customPlot->setOpenGl(true,16);
 
                 ui->customPlot->replot();
-                ui->statusBar->showMessage("Завершено");
+                ui->statusBar->showMessage(tr("Completed"));
 
                 epsilon.clear();
                 sigma.clear();
@@ -309,14 +339,14 @@ void MainWindow::ButtPlots()
             }
             catch (io::error::missing_column_in_header)
             {
-                ui->statusBar->showMessage("Нет требуемых колонок для чтения");
-                QMessageBox::critical(this,"Ошибка","Неверная структура файла");
+                ui->statusBar->showMessage(tr("No required reading columns"));
+                QMessageBox::critical(this,tr("Error"),tr("Invalid file structure"));
             }
         }
         catch (io::error::can_not_open_file)
         {
-            ui->statusBar->showMessage("Файл " + *fileName + " не смог быть открытым");
-            QMessageBox::critical(this,"Ошибка","Нет такого файла или каталога");
+            ui->statusBar->showMessage(tr("File") + " " + *fileName + tr(" could not be open"));
+            QMessageBox::critical(this,tr("Error"),tr("No such file or directory"));
         }
 
         delete fileName;
@@ -342,14 +372,14 @@ void MainWindow::ButtPlotSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
+        ui->statusBar->showMessage(tr("Error") + ": " +fil->errorString());
     }
     else
     {
         ui->customPlot->savePng(*s,1181,866);
         fil->close();
-        ui->statusBar->showMessage("Файл " + *s + " успешно сохранен");
-        QMessageBox::information(this,"","Сохранение прошло успешно");
+        ui->statusBar->showMessage(tr("File") + " " + *s + tr(" successfully saved"));
+        QMessageBox::information(this,"",tr("Saving was successful"));
     }
     delete s;
     delete fil;
@@ -374,7 +404,7 @@ void MainWindow::ButtDataSave()
     {
         fil->close();
         //qDebug() << fil->errorString();
-        ui->statusBar->showMessage("Ошибка: " +fil->errorString());
+        ui->statusBar->showMessage(tr("Error") + ": " +fil->errorString());
     }
     else
     {
@@ -385,8 +415,8 @@ void MainWindow::ButtDataSave()
             *ts << ddd[0][i] << "\t" << ddd[1][i] << "\n";
         }
         fil->close();
-        ui->statusBar->showMessage("Файл " + *s + " успешно сохранен");
-        QMessageBox::information(this,"","Сохранение прошло успешно");
+        ui->statusBar->showMessage(tr("File") + " " + *s + tr(" successfully saved"));
+        QMessageBox::information(this,"",tr("Saving was successful"));
     }
 
     ui->lineEdit->setFocus();
@@ -407,6 +437,8 @@ void MainWindow::slotMouseMove(QMouseEvent *event)
 
 MainWindow::~MainWindow()
 {
+    sett->setValue("SETTING/language",*language);
+
     sett->setValue("SETTING/k",QString::number(q_str_to_double(ui->lineEdit_2->text())));
     sett->setValue("SETTING/a",QString::number(q_str_to_double(ui->lineEdit_3->text())));
     sett->setValue("SETTING/b",QString::number(q_str_to_double(ui->lineEdit_4->text())));
@@ -424,6 +456,9 @@ MainWindow::~MainWindow()
     delete max_index_i;
 
     //delete tracer;
+
+    delete actionGroup;
+    delete language;
 
     delete ui;
 

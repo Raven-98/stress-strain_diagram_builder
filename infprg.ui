@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>О программе</string>
+   <string>About program</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -49,7 +49,7 @@
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Версия 0.3.5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Version 0.3.6&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -64,13 +64,13 @@
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
-         <string>О программе</string>
+         <string>About</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>Stress-Strain Diagram Builder - программа для построения диаграмм деформирования по данным цифрового мультиметра</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Stress-Strain Diagram Builder - a program for building strain diagrams according to a digital multimeter.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
@@ -94,7 +94,7 @@
          <item>
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Raven-98/stress-strain_diagram_builder/blob/master/LICENSE&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Лицензия: GNU General Public License v3.0&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Raven-98/stress-strain_diagram_builder/blob/master/LICENSE&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;License: GNU General Public License v3.0&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -102,7 +102,7 @@
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
-         <string>Библиотеки</string>
+         <string>Libraries</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
@@ -130,13 +130,13 @@
        </widget>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
-         <string>Авторы</string>
+         <string>Authors</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <widget class="QLabel" name="label_11">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Raven-98&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Разработчик&lt;/span&gt;&lt;/p&gt;&lt;p&gt;E-mail: &lt;a href=&quot;andriy1898k@hotmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;andriy1898k@hotmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Raven-98&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Developer&lt;/span&gt;&lt;/p&gt;&lt;p&gt;E-mail: &lt;a href=&quot;andriy1898k@hotmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;andriy1898k@hotmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

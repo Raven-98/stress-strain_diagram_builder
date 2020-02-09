@@ -51,6 +51,11 @@ RESOURCES += \
 RC_FILE += \
     ssdb.rc
 
+TRANSLATIONS += \
+    language_ru_RU.ts
+
+CODECFORSRC = UTF-8
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

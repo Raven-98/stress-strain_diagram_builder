@@ -20,6 +20,10 @@
 
 #include "qcustomplot/qcustomplot.h"
 
+#include <QTranslator>
+#include <QLibraryInfo>
+#include <QActionGroup>
+
 namespace Ui {
 class MainWindow;
 }
@@ -47,6 +51,9 @@ private slots:
 
     void slotMouseMove(QMouseEvent * event);
 
+    void languageEnFunc();
+    void languageRuFunc();
+
 private:
     Ui::MainWindow *ui;
     QSettings *sett;
@@ -64,6 +71,12 @@ private:
     double q_str_to_double(QString str);
 
     QCPItemTracer *tracer;
+
+    QTranslator languageTranslator;
+    QActionGroup *actionGroup;
+    QString *language;
+
+    void languagesFunc(QString *lang);
 };
 
 #endif // MAINWINDOW_H

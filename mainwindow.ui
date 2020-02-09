@@ -64,7 +64,7 @@
            </size>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Файл:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;File:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -303,7 +303,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Построить диаграмму</string>
+           <string>Build a chart</string>
           </property>
          </widget>
         </item>
@@ -322,7 +322,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Сохранить диаграмму</string>
+           <string>Save chart</string>
           </property>
          </widget>
         </item>
@@ -341,7 +341,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Сохранить данные</string>
+           <string>Save data</string>
           </property>
          </widget>
         </item>
@@ -357,22 +357,22 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Файл</string>
+     <string>File</string>
     </property>
     <addaction name="action_1"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>Справка</string>
+     <string>Help</string>
     </property>
     <widget class="QMenu" name="menu_3">
      <property name="title">
-      <string>Дополнительная информация</string>
+      <string>Additional information</string>
      </property>
      <addaction name="action_4"/>
      <addaction name="action_5"/>
@@ -381,7 +381,21 @@
     <addaction name="menu_3"/>
     <addaction name="action_3"/>
    </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <addaction name="action_7"/>
+     <addaction name="action_6"/>
+    </widget>
+    <addaction name="menu_5"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_4"/>
    <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
@@ -391,7 +405,7 @@
   </widget>
   <action name="action_1">
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
    </property>
    <property name="toolTip">
     <string>Выход из программы</string>
@@ -402,7 +416,7 @@
   </action>
   <action name="action_2">
    <property name="text">
-    <string>Помощь</string>
+    <string>Help</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -410,17 +424,33 @@
   </action>
   <action name="action_3">
    <property name="text">
-    <string>О программе</string>
+    <string>About program</string>
    </property>
   </action>
   <action name="action_4">
    <property name="text">
-    <string>Работа с файлами</string>
+    <string>Work with files</string>
    </property>
   </action>
   <action name="action_5">
    <property name="text">
-    <string>Сохранение данных</string>
+    <string>Saving data</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Russian</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
    </property>
   </action>
  </widget>
