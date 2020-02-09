@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Помощь</string>
+   <string>Help</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>k - коэффициент перехода от U к σ</string>
+      <string>k - transfer factor from U to σ</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -27,7 +27,7 @@
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>a - толщина образца, мм</string>
+      <string>a - sample thickness, mm</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -37,7 +37,7 @@
    <item>
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>b - ширина образца, мм</string>
+      <string>b - sample width, mm</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -47,7 +47,7 @@
    <item>
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;l&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt; - начальная длина образца, мм&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;l&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt; - initial sample length, mm&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -57,7 +57,7 @@
    <item>
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>v - скорость растяжения, мм/сек</string>
+      <string>v - stretching speed, mm/s</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
