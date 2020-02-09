@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     actionGroup = new QActionGroup(this);
     actionGroup->addAction(ui->action_6);
     actionGroup->addAction(ui->action_7);
-    if (*language == "ru")
+    if (*language == "ru_RU")
         ui->action_6->setChecked(true);
     else
         ui->action_7->setChecked(true);
