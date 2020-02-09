@@ -26,9 +26,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->lineEdit_2->setText(sett->value("SETTING/k").toString());
     ui->lineEdit_3->setText(sett->value("SETTING/a").toString());
+    ui->lineEdit_3->setToolTip("[мм]");
+    ui->label_4->setToolTip("[мм]");
     ui->lineEdit_4->setText(sett->value("SETTING/b").toString());
+    ui->lineEdit_4->setToolTip("[мм]");
+    ui->label_3->setToolTip("[мм]");
     ui->lineEdit_5->setText(sett->value("SETTING/l0").toString());
+    ui->lineEdit_5->setToolTip("[мм]");
+    ui->label_5->setToolTip("[мм]");
     ui->lineEdit_6->setText(sett->value("SETTING/v").toString());
+    ui->lineEdit_6->setToolTip("[мм/с]");
+    ui->label_6->setToolTip("[мм/с]");
 
     connect(ui->action_1,&QAction::triggered,this,qApp->quit);
     connect(ui->action_2,&QAction::triggered,this,&MainWindow::helpPrg);
