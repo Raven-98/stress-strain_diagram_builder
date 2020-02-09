@@ -47,7 +47,7 @@
    <item>
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;l&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt; - начальная длинна образца, мм&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;l&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt; - начальная длина образца, мм&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
