@@ -6,4 +6,4 @@
 
 ### Windows
 
-Скачайте архив [stress-strain_diagram_builder.zip](https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A), распакуйте, запуситите setup.exe.
+Скачайте архив [ssdb_win.zip](https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A), распакуйте, запуситите setup.exe.
