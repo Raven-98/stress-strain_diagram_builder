@@ -5,4 +5,5 @@
 ## Установка приложения
 
 ###Windows
+
 Скачайте архив по этой [ссылка](https://mega.nz/#F!heohwQTJ!jaiIc-LEqq1lsrtgmr6b_A), распакуйте, запуситите setup.exe.
