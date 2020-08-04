@@ -27,15 +27,43 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#ifndef DIALOGSAVEPLOT_H
+#define DIALOGSAVEPLOT_H
 
-#include <QApplication>
+#include <QDialog>
+#include <QSettings>
+#include <QMessageBox>
+#include <QFileDialog>
 
-int main(int argc, char *argv[])
+QT_BEGIN_NAMESPACE
+namespace Ui
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    class DialogSavePlot;
 }
+QT_END_NAMESPACE
+
+class DialogSavePlot : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit DialogSavePlot(QWidget *parent = nullptr);
+    ~DialogSavePlot();
+    QStringList getInput();
+
+private slots:
+    void on_pushButtonNameOpen_clicked();
+    void on_pushButtonPathOpen_clicked();
+
+    void on_buttonBox_accepted();
+
+    void on_buttonBox_rejected();
+
+private:
+    Ui::DialogSavePlot *ui;
+    QSettings *sett;
+
+    void accept();
+};
+
+#endif // DIALOGSAVEPLOT_H

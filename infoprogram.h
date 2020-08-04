@@ -27,15 +27,27 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#ifndef INFOPROGRAM_H
+#define INFOPROGRAM_H
 
-#include <QApplication>
+#include <QDialog>
 
-int main(int argc, char *argv[])
+QT_BEGIN_NAMESPACE
+namespace Ui
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    class InfoProgram;
 }
+QT_END_NAMESPACE
+
+class InfoProgram : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit InfoProgram(QWidget *parent = nullptr);
+    ~InfoProgram();
+
+private:
+    Ui::InfoProgram *ui;
+};
+#endif // INFOPROGRAM_H

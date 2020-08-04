@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TableWidget</class>
+ <widget class="QTableWidget" name="TableWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>300</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <property name="rowCount">
+   <number>0</number>
+  </property>
+  <property name="columnCount">
+   <number>2</number>
+  </property>
+  <column/>
+  <column/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

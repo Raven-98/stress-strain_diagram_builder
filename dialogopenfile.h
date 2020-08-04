@@ -27,15 +27,39 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#ifndef DIALOGOPENFILE_H
+#define DIALOGOPENFILE_H
 
-#include <QApplication>
+#include <QDialog>
+#include <QMessageBox>
+#include <QSettings>
+#include <QFileDialog>
 
-int main(int argc, char *argv[])
+
+QT_BEGIN_NAMESPACE
+namespace Ui
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    class DialogOpenFile;
 }
+QT_END_NAMESPACE
+
+class DialogOpenFile : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit DialogOpenFile(QWidget *parent);
+    ~DialogOpenFile();
+    QStringList getInput();
+
+private:
+    Ui::DialogOpenFile *ui;
+    QSettings *sett;
+
+    void accept();
+
+private slots:
+    void openFile();
+};
+
+#endif  // DIALOGOPENFILE_H

@@ -1,8 +1,15 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-<qresource>
-    <file>img/icon.png</file>
-    <file>img/im001.png</file>
-    <file>language_ru_RU.qm</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>img/icon.png</file>
+        <file>img/Russia.png</file>
+        <file>img/United-Kingdom.png</file>
+        <file>img/exit.png</file>
+        <file>img/file.png</file>
+        <file>img/open_file.png</file>
+        <file>img/about_program.png</file>
+        <file>img/save_file.png</file>
+        <file>img/save_plot.png</file>
+        <file>img/open_path.png</file>
+        <file>translations/ssdb_Ru.qm</file>
+    </qresource>
 </RCC>

@@ -27,15 +27,40 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#ifndef TABLEWIDGET_H
+#define TABLEWIDGET_H
 
-#include <QApplication>
+#include <QTableWidget>
+#include <QFile>
+#include <QMessageBox>
 
-int main(int argc, char *argv[])
+#include <dialogsavedata.h>
+
+QT_BEGIN_NAMESPACE
+namespace Ui
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    class TableWidget;
 }
+QT_END_NAMESPACE
+
+class TableWidget : public QTableWidget
+{
+    Q_OBJECT
+
+public:
+    explicit TableWidget(QWidget *parent,QString winTitle);
+    ~TableWidget();
+    void set_Data(QVector<QVector<double>> data);
+    QVector<QVector<double>> get_Data();
+
+public slots:
+    void save_Data();
+
+private:
+    Ui::TableWidget *ui;
+    QString *fileDir;
+
+    void save(QStringList str);
+};
+
+#endif // TABLEWIDGET_H

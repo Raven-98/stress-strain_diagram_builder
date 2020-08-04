@@ -27,15 +27,19 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#include "infoprogram.h"
+#include "./ui_infoprogram.h"
 
-#include <QApplication>
-
-int main(int argc, char *argv[])
+InfoProgram::InfoProgram(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::InfoProgram)
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    ui->setupUi(this);
+
+    ui->label_librarieQt->setText("<html><head/><body><p><br/>Qt " + QString(QT_VERSION_STR) + "</p><p><a href=\"https://www.qt.io/\"><span style=\" text-decoration: underline; color:#2980b9;\">https://www.qt.io/</span></a></p></body></html>");
+}
+
+InfoProgram::~InfoProgram()
+{
+    delete ui;
 }

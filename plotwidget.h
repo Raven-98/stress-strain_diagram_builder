@@ -27,15 +27,40 @@
  * $QT_END_LICENSE$
 ***********************************************************************/
 
-#include "mainwindow.h"
+#ifndef PLOTWIDGET_H
+#define PLOTWIDGET_H
 
-#include <QApplication>
+#include "qcustomplot/qcustomplot.h"
+#include "dialogsaveplot.h"
 
-int main(int argc, char *argv[])
+QT_BEGIN_NAMESPACE
+namespace Ui
 {
-    QApplication app(argc, argv);
-    qApp->setWindowIcon(QIcon(":/img/icon.png"));
-    MainWindow mWin;
-    mWin.show();
-    return app.exec();
+    class PlotWidget;
 }
+QT_END_NAMESPACE
+
+class PlotWidget : public QCustomPlot
+{
+    Q_OBJECT
+
+public:
+    explicit PlotWidget(QWidget *parent = nullptr);
+    ~PlotWidget();
+    void set_Data(QVector<QVector<double>> data,QString title);
+
+public slots:
+    void save_Plot();
+
+private:
+    Ui::PlotWidget *ui;
+    QCPItemTracer *tracer;
+
+    double calculate_limit(double value);
+    void save(QStringList str);
+
+private slots:
+    void slotMouseMove(QMouseEvent * event);
+};
+
+#endif // PLOTWIDGET_H
